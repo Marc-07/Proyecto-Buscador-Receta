@@ -2,6 +2,7 @@ function iniciarApp(){
 
     const selectCategorias = document.querySelector('#categorias');
     selectCategorias.addEventListener('change', seleccionarCategoria);
+    const resultado = document.querySelector('#resultado');
 
     obtenerCategorias();
 
@@ -38,7 +39,6 @@ function iniciarApp(){
     function mostrarRecetas (recetas = []){
         
         //Iterar en los resultados
-
         recetas.forEach(receta => {
 
             const {idMeal, strMeal, strMealThumb}=receta;
@@ -57,7 +57,26 @@ function iniciarApp(){
             const recetaCardBody = document.createElement ('DIV');
             recetaCardBody.classList.add('card-body');
 
-            console.log(recetaImagen);
+            const recetaHeading = document.createElement('H3');
+            recetaHeading.classList.add('card-title', 'mb-3');
+            recetaHeading.textContent = strMeal;
+
+
+            const recetaButton = document.createElement('BUTTON');
+            recetaButton.classList.add('btn', 'btn-ranger', 'w-100');
+            recetaButton.textContent = 'Ver Receta';
+
+
+            //Inyectar en código HTML
+            recetaCardBody.appendChild(recetaHeading);
+            recetaCardBody.appendChild(recetaButton);
+
+            recetaCard.appendChild(recetaImagen);
+            recetaCard.appendChild(recetaCardBody);
+
+            recetaContenedor.appendChild(recetaCard);
+
+            resultado.appendChild(recetaContenedor);
         })
 
 
