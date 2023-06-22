@@ -103,7 +103,7 @@ function iniciarApp(){
 
     function mostrarRecetaModal(receta){
 
-        console.log(receta);
+        //console.log(receta);
 
         const {idMeal, strInstructions, strMeal, strMealThumb} = receta;
 
@@ -139,14 +139,33 @@ function iniciarApp(){
 
         modalBody.appendChild(listGroup);
         
+
+        const modalFooter = document.querySelector('.modal-footer');
+        limpiarHTML(modalFooter);
+        
+        
+        //botones de cerrar y favorito
+        const btnFavorito = document.createElement('BUTTON');
+        btnFavorito.classList.add('btn', 'btn-danger', 'col');
+        btnFavorito.textContent = 'Guardar Favorito';
+
+        const btnCerrarModal = document.createElement('BUTTON');
+        btnCerrarModal.classList.add('btn', 'btn-secondary', 'col');
+        btnCerrarModal.textContent = 'Cerrar';
+
+        modalFooter.appendChild(btnFavorito);
+        modalFooter.appendChild(btnCerrarModal);
+
+        
+        
         //Muestra el modal 
         modal.show();
 
     }
     
-    function limpiarHTML(selector){
-        while(selector.firstChild){
-            selector.removeChild(resultado.firstChild)
+    function limpiarHTML(selector) {
+        while(selector.firstChild) {
+            selector.removeChild(selector.firstChild);
         }
     }
 }
